@@ -204,11 +204,12 @@ def winning_team
 end
 
 def player_with_longest_name
-  longest_ = {:points => 0}
+  longest_name = {:player_name => ""}
   hash = game_hash
   hash.each do |team, team_stats|
     team_stats[:players].each do |player|
-      most_points = player[:points] > most_points[:points] ? player : most_points
+      longest_name = player[:player_name] > longest_name[:player_name] ? player : longest_name
     end
   end
-  most_points[:player_name]
+  longest_name[:player_name]
+end
