@@ -189,15 +189,17 @@ def most_points_scored
 end
 
 def winning_team
-  points_with_team = {}
+  winners = {:team_name => "", :points => 0}
   hash = game_hash
   hash.each do |team, team_stats|
     team_stats[:players].each do |player|
       total_points += player[:points]
     end
-    points_with_team[total_points] = team_stats[:team_name]
+    if total_points > winners[:points]
+      winners = {:team_name => team_stats[:team_name], :points => total_points}
+    end
   end
-  points_with_team.reduce{|k,v| v
+  winners[:team_name]
 end
 
 
