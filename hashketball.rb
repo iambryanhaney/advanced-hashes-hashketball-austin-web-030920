@@ -204,14 +204,14 @@ def winning_team
 end
 
 def player_with_longest_name
-  longest_name = {:player_name => ""}
+  player_names = []
   hash = game_hash
   hash.each do |team, team_stats|
     team_stats[:players].each do |player|
-      longest_name = player[:player_name].length > longest_name[:player_name].length ? player : longest_name
+      player_names << player[:player_name]
     end
   end
-  longest_name[:player_name]
+  player_names.max_by{|name| name.length}
 end
 
 def long_name_steals_a_ton?
