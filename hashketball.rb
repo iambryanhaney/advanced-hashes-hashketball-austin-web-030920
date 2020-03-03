@@ -192,6 +192,7 @@ def winning_team
   winners = {:team_name => "", :points => 0}
   hash = game_hash
   hash.each do |team, team_stats|
+    total_points = 0
     team_stats[:players].each do |player|
       total_points += player[:points]
     end
